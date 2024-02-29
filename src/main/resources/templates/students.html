@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Analytic System</title>
+    <style>
+        nav {
+            background-color: #963;
+            overflow: hidden;
+        }
+
+        nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #963;
+            color: black;
+        }
+
+        nav button {
+            display: none;
+        }
+
+        /* Style for the table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* Style for the buttons */
+        .btn {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+        .btn-danger {
+            background-color: #f44336;
+        }
+
+        .btn-danger:hover {
+            background-color: #da190b;
+        }
+        .btn-primary {
+            background-color: #963;
+            border-color: #963;
+            color: #fff;
+            padding: 8px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <a href="#">Analytic System</a>
+</nav>
+
+<div>
+    <div>
+        <h1> A Comprehensive Review </h1>
+    </div>
+
+    <div th:if="${avgGpaStudent > 0}">
+        <p th:text="'The class average GPA is: ' + ${avgGpaStudent}"></p>
+    </div>
+
+    <div th:if="${maxGpaStudent != null}">
+        <p th:text="${maxGpaStudent.firstName} + ' ' + ${maxGpaStudent.lastName} + ' has the highest GPA in the class: ' + ${maxGpaStudent.gpa}"></p>
+        <p th:text="${maxGpaMessage}"></p>
+    </div>
+
+    <div th:if="${minGpaStudent != null}">
+        <p th:text="${minGpaStudent.firstName} + ' ' + ${minGpaStudent.lastName} + ' has the lowest GPA in the class: ' + ${minGpaStudent.gpa}"></p>
+        <p th:text="${minGpaMessage}"></p>
+    </div>
+
+    <table>
+        <thead>
+        <tr>
+            <th> Student First Name</th>
+            <th> Student Last Name</th>
+            <th> Student Email </th>
+            <th> Student GPA </th>
+            <th> Student Age </th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+            <td th:text="${maxGpaStudent.firstName}"></td>
+            <td th:text="${maxGpaStudent.lastName}"></td>
+            <td th:text="${maxGpaStudent.email}"></td>
+            <td th:text="${maxGpaStudent.gpa}"></td>
+            <td th:text="${maxGpaStudent.age}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <thead>
+        <tr>
+            <th> Student First Name</th>
+            <th> Student Last Name</th>
+            <th> Student Email </th>
+            <th> Student GPA </th>
+            <th> Student Age </th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+            <td th:text="${minGpaStudent.firstName}"></td>
+            <td th:text="${minGpaStudent.lastName}"></td>
+            <td th:text="${minGpaStudent.email}"></td>
+            <td th:text="${minGpaStudent.gpa}"></td>
+            <td th:text="${minGpaStudent.age}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+
+</div>
+</body>
+</html>
